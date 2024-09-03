@@ -12,6 +12,7 @@ module.exports = {
         orange: '#F6775B',
         stroke: '#E4EBF9',
         blue: '#1655BD',
+        white: '#ffffff',
         'grey-stroke': '#CBD3EA',
         'grey-indicator': '#97ADD7',
         'grey-subtitle': '#768AB0',

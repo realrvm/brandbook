@@ -21,7 +21,8 @@
     "baseUrl": "./",
     "paths": {
       "@pages/*": ["src/app/pages/*"],
-      "@core/*": ["src/app/core/*"]
+      "@core/*": ["src/app/core/*"],
+      "@svg/": ["src/assets/svg/*"]
     },
     "useDefineForClassFields": false,
     "lib": [
