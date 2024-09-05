@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
+import { ResponsiveService } from '@core/services/responsive.service'
 import { WrapperComponent } from '@core/wrapper/wrapper.component'
 
 @Component({
@@ -8,4 +9,8 @@ import { WrapperComponent } from '@core/wrapper/wrapper.component'
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent {}
+export class MainComponent {
+  private responsiveService = inject(ResponsiveService)
+
+  public isWebWidth = this.responsiveService.isWebWidth
+}

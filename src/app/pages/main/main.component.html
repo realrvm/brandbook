@@ -1,5 +1,8 @@
 <bb-wrapper
   ><h1 class="text-3xl font-bold">Главная</h1>
   <p class="text-primary font-semibold">страница</p>
-  <p class="font-inter text-text-primary text-xl">Проверка стилей</p>
+
+  @if (isWebWidth()) {
+    <p class="font-inter text-text-primary text-xl">Проверка стилей</p>
+  }
 </bb-wrapper>
