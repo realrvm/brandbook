@@ -3,8 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'assets/theme2.scss';
+@import 'primeng/resources/primeng.css';
+
 html {
-  @apply font-gr-m;
+  @apply font-gilroy font-medium;
 }
 
 html,

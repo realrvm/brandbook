@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core'
 import { RouterLink, RouterLinkActive } from '@angular/router'
 import { SvgIconComponent } from '@core/shared/ui/svg-icon/svg-icon.component'
+import { WrapperComponent } from '@core/wrapper/wrapper.component'
 
 const navItems = [
   { path: 'services-for-business', text: 'Сервисы бизнесу' },
@@ -16,7 +17,7 @@ const navItems = [
 @Component({
   selector: 'bb-header',
   standalone: true,
-  imports: [SvgIconComponent, RouterLink, RouterLinkActive],
+  imports: [SvgIconComponent, RouterLink, RouterLinkActive, WrapperComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

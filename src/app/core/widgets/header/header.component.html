@@ -1,20 +1,22 @@
-<div
-  class="max-w-[1300px] w-full p-5 flex items-center justify-between mx-auto"
->
-  <a routerLink="main">
-    <svg icon="sprite" id="logo" class="h-[74px]"></svg>
-  </a>
-  <div>Search</div>
-</div>
-<div class="bg-blue h-[76px] flex items-center">
-  <nav class="max-w-[1300px] w-full p-5 mx-auto flex items-center gap-8">
-    @for (navItem of navItems(); track $index) {
-      <a
-        routerLink="{{ navItem.path }}"
-        routerLinkActive="active-link"
-        class="text-white text-base text-nowrap"
-        >{{ navItem.text }}</a
-      >
-    }
-  </nav>
+<bb-wrapper>
+  <div class="py-5 flex items-center justify-between">
+    <a routerLink="main">
+      <svg icon="sprite" id="logo" class="h-[74px]"></svg>
+    </a>
+    <div>Search</div>
+  </div>
+</bb-wrapper>
+<div class="bg-blue h-[76px] flex items-center justify-center">
+  <bb-wrapper>
+    <nav class="py-5 flex items-center gap-8">
+      @for (navItem of navItems(); track $index) {
+        <a
+          routerLink="{{ navItem.path }}"
+          routerLinkActive="active-link"
+          class="text-white text-base text-nowrap"
+          >{{ navItem.text }}</a
+        >
+      }
+    </nav>
+  </bb-wrapper>
 </div>
