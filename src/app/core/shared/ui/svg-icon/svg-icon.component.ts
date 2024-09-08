@@ -1,17 +1,37 @@
-import { Component, input } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Component, inject, input, OnChanges } from '@angular/core'
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser'
+import { tap } from 'rxjs'
 
 @Component({
-  selector: 'svg[icon]',
+  selector: 'bb-svg-icon',
   standalone: true,
   imports: [],
-  template: '<svg:use [attr.href]="href"></svg:use>',
-  styles: [''],
+  template: `<span [innerHTML]="svgIcon"></span>`,
+  styles: ``,
 })
-export class SvgIconComponent {
-  public icon = input<string>('')
-  public id = input<string>('')
+export class SvgIconComponent implements OnChanges {
+  private http = inject(HttpClient)
+  private sanitizer = inject(DomSanitizer)
 
-  public get href(): string {
-    return `svg/${this.icon()}.svg#${this.id()}`
+  public name = input<string>('')
+
+  public svgIcon?: SafeHtml
+
+  ngOnChanges() {
+    if (!this.name()) {
+      this.svgIcon = ''
+      return
+    }
+
+    this.http
+      .get(`assets/images/svg/${this.name()}.svg`, { responseType: 'text' })
+      .pipe(
+        tap(
+          (value) =>
+            (this.svgIcon = this.sanitizer.bypassSecurityTrustHtml(value)),
+        ),
+      )
+      .subscribe()
   }
 }

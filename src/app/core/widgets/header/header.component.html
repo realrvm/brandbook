@@ -1,22 +1,42 @@
 <bb-wrapper>
-  <div class="py-5 flex items-center justify-between">
+  <div class="py-5 flex items-center justify-between gap-2 tablet:gap-5">
     <a routerLink="main">
-      <svg icon="sprite" id="logo" class="h-[74px]"></svg>
+      <bb-svg-icon
+        name="{{ isDesktop() ? 'logo-md' : 'logo-sm' }}"
+      ></bb-svg-icon>
     </a>
-    <div>Search</div>
+    <div class="flex items-center gap-2 tablet:gap-4">
+      @if (!isHandset()) {
+        <bb-search-input />
+      }
+      <bb-visually-impaired />
+      @if (!isDesktop()) {
+        <button (click)="handleMenuClick()">
+          <bb-svg-icon name="burger"></bb-svg-icon>
+        </button>
+      }
+    </div>
   </div>
 </bb-wrapper>
-<div class="bg-blue h-[76px] flex items-center justify-center">
+<div
+  class="bg-blue desktop:h-[76px] items-center justify-center tablet:hidden desktop:flex"
+>
   <bb-wrapper>
-    <nav class="py-5 flex items-center gap-8">
-      @for (navItem of navItems(); track $index) {
-        <a
-          routerLink="{{ navItem.path }}"
-          routerLinkActive="active-link"
-          class="text-white text-base text-nowrap"
-          >{{ navItem.text }}</a
-        >
-      }
-    </nav>
+    @if (!isHandset()) {
+      <nav class="py-5 flex items-center justify-between gap-6">
+        @for (navItem of navItems(); track $index) {
+          <a
+            routerLink="{{ navItem.path }}"
+            routerLinkActive="active-link"
+            class="text-white text-base text-center"
+            >{{ navItem.text }}</a
+          >
+        }
+      </nav>
+    } @else {
+      <div class="py-[14px]">
+        <bb-search-input />
+      </div>
+    }
   </bb-wrapper>
 </div>

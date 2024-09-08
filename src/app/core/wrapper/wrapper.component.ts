@@ -11,7 +11,7 @@ import { Component } from '@angular/core'
   `,
   styles: `
     :host {
-      @apply block;
+      @apply block w-full;
     }
   `,
 })

@@ -1,10 +1,18 @@
 import { Component } from '@angular/core'
+import { BreadcrumbsComponent } from '@core/shared/ui/breadcrumbs/breadcrumbs.component'
+import { PageTitleComponent } from '@core/shared/ui/page-title/page-title.component'
+import { WrapperComponent } from '@core/wrapper/wrapper.component'
 
 @Component({
   selector: 'bb-services-for-investors',
   standalone: true,
-  imports: [],
+  imports: [WrapperComponent, BreadcrumbsComponent, PageTitleComponent],
   templateUrl: './services-for-investors.component.html',
   styleUrl: './services-for-investors.component.scss',
 })
-export class ServicesForInvestorsComponent {}
+export class ServicesForInvestorsComponent {
+  public items = [
+    { route: '/', label: 'Главная' },
+    { label: 'Сервисы инвестору' },
+  ]
+}

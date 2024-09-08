@@ -3,6 +3,15 @@ module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {},
+    screens: {
+      handset: { max: '599.98px' },
+      tablet: { min: '600px', max: '959.98px' },
+      desktop: { min: '960px' },
+    },
+    fontSize: {
+      sm: '13px',
+      md: '14px',
+    },
     colors: {
       primary: 'var(--primary-color)',
       'text-primary': 'var(--text-color)',
@@ -13,6 +22,7 @@ module.exports = {
       'grey-stroke': '#CBD3EA',
       'grey-indicator': '#97ADD7',
       'grey-subtitle': '#768AB0',
+      'grey-stroke2': '#bbc7ec',
     },
     fontFamily: {
       gilroy: ['Gilroy', 'sans-serif'],

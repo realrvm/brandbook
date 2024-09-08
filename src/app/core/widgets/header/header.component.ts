@@ -1,26 +1,40 @@
-import { Component, signal } from '@angular/core'
+import { Component, computed, inject, signal } from '@angular/core'
 import { RouterLink, RouterLinkActive } from '@angular/router'
+import { ResponsiveService } from '@core/services/responsive.service'
+import { Responsive } from '@core/shared/enums/enums'
+import { SearchInputComponent } from '@core/shared/ui/search-input/search-input.component'
 import { SvgIconComponent } from '@core/shared/ui/svg-icon/svg-icon.component'
+import { VisuallyImpairedComponent } from '@core/shared/ui/visually-impaired/visually-impaired.component'
 import { WrapperComponent } from '@core/wrapper/wrapper.component'
-
-const navItems = [
-  { path: 'services-for-business', text: 'Сервисы бизнесу' },
-  { path: 'services-for-investors', text: 'Сервисы инвестору' },
-  { path: 'market-participant', text: 'Участники рынка' },
-  { path: 'projects-file', text: 'Картотека проектов' },
-  { path: 'publications', text: 'Публикации' },
-  { path: 'potential-of-kuzbass', text: 'Потенциал Кузбасса' },
-  { path: 'services', text: 'Сервисы платформы' },
-  { path: 'about', text: 'О проекте' },
-]
+import { MenuItem } from 'primeng/api'
+import { navItems } from '../nav-items'
 
 @Component({
   selector: 'bb-header',
   standalone: true,
-  imports: [SvgIconComponent, RouterLink, RouterLinkActive, WrapperComponent],
+  imports: [
+    SvgIconComponent,
+    RouterLink,
+    RouterLinkActive,
+    WrapperComponent,
+    SearchInputComponent,
+    VisuallyImpairedComponent,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  public navItems = signal(navItems)
+  private responsiveService = inject(ResponsiveService)
+  public items: MenuItem[] = []
+
+  private width = this.responsiveService.width
+
+  public isDesktop = computed(() => this.width() === Responsive.DESKTOP)
+  public isHandset = computed(() => this.width() === Responsive.HANDSET)
+
+  public navItems = signal(navItems).asReadonly()
+
+  handleMenuClick() {
+    alert('TODO: сделать мобильное меню')
+  }
 }

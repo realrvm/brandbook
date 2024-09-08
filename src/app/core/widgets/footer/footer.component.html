@@ -1,1 +1,78 @@
-<bb-wrapper><h1 class="text-2xl font-bold">Футер</h1></bb-wrapper>
+<div class="bg-stroke py-7 table:py-[70px] desktop:py-[80px]">
+  <bb-wrapper>
+    @if (!isHandset()) {
+      <div
+        class="py-5 flex items-center justify-between gap-2 tablet:gap-5 mb-20"
+      >
+        <a routerLink="main">
+          <bb-svg-icon name="logo-md"></bb-svg-icon>
+        </a>
+        <div class="flex items-center gap-2 tablet:gap-4">
+          <bb-search-input [isHeader]="false" />
+          <bb-visually-impaired />
+        </div>
+      </div>
+      <div class="flex justify-between gap-20">
+        <div class="grid grid-cols-3 gap-y-7 tablet:gap-x-7 desktop:gap-x-20">
+          @for (navItem of navItems(); track $index) {
+            <a routerLink="{{ navItem.path }}" class="text-base">{{
+              navItem.text
+            }}</a>
+          }
+        </div>
+        <div class="flex flex-col gap-5">
+          <span class="font-md text-grey-subtitle">Партнёры:</span>
+          <div class="flex gap-4 flex-wrap">
+            <img src="assets/images/img/mock-img.png" alt="mock img" />
+            <img src="assets/images/img/mock-img.png" alt="mock img" />
+            <img src="assets/images/img/mock-img.png" alt="mock img" />
+            <img src="assets/images/img/mock-img.png" alt="mock img" />
+          </div>
+        </div>
+      </div>
+    } @else {
+      <div class="flex flex-col gap-5">
+        <bb-visually-impaired />
+        @for (navItem of navItems(); track $index) {
+          <a routerLink="{{ navItem.path }}" class="text-base">{{
+            navItem.text
+          }}</a>
+        }
+        <bb-search-input [isHeader]="false" />
+        <div class="grid grid-cols-2 gap-4">
+          <img src="assets/images/img/mock-img.png" alt="mock img" />
+          <img src="assets/images/img/mock-img.png" alt="mock img" />
+          <img src="assets/images/img/mock-img.png" alt="mock img" />
+          <img src="assets/images/img/mock-img.png" alt="mock img" />
+        </div>
+        <a routerLink="main">
+          <bb-svg-icon name="logo-md"></bb-svg-icon>
+        </a>
+      </div>
+    }
+  </bb-wrapper>
+</div>
+<div class="bg-blue py-10 text-white font-md">
+  <bb-wrapper>
+    <div
+      class="flex flex-col tablet:flex-row desktop:flex-row tablet:items-center justify-between gap-6"
+    >
+      <span class="tablet:w-[55%] desktop:w-[70%]">
+        © 2024 «ФинПро» инструменты развития бизнеса. Все права защищены.
+        Министерство финансов Кузбасса.
+      </span>
+      <div
+        class="flex flex-col tablet:flex-row desktop:flex-row tablet:items-center desktop:items-center gap-8"
+      >
+        <img
+          src="assets/images/img/yandex-fake-counter.jpg"
+          alt="fake counter"
+          class="order-last desktop:order-first handset:self-end"
+        />
+        <a href="mailto:info@finpro.kemobl.ru" class="underline"
+          >info&#64;finpro.kemobl.ru</a
+        >
+      </div>
+    </div>
+  </bb-wrapper>
+</div>
