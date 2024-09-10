@@ -2,3 +2,191 @@
   <bb-breadcrumbs [items]="items" />
   <bb-page-title title="Потенциал Кузбасса" />
 </bb-wrapper>
+<section class="my-16 desktop:max-w-[1260px] desktop:w-full desktop:mx-auto">
+  <div class="flex">
+    <span class="h-1.5 bg-orange w-[30%]"></span>
+    <span class="h-1.5 bg-blue w-[70%] desktop:w-[60%]"></span>
+    <span
+      class="h-1.5 bg-orange w-[10%] hidden tablet:hidden desktop:block"
+    ></span>
+  </div>
+  <div class="h-[281px] tablet:h-[376px] desktop:h-[454px] relative">
+    <img
+      ngSrc="assets/images/img/kuzbass-intro.jpg"
+      priority
+      fill
+      class="object-cover"
+    />
+    <div
+      class="absolute flex flex-col left-5 top-[170px] tablet:left-1/2 tablet:top-1/2 transform tablet:-translate-x-1/2 tablet:-translate-y-1/2 desktop:left-1/2 desktop:top-1/2 desktop:-translate-x-1/2 desktop:-translate-y-1/2 gap-1"
+    >
+      <h2
+        class="max-w-[200px] tablet:max-w-none desktop:max-w-none font-semibold text-[40px] tablet:text-[46px] desktop:text-[50px] text-white tablet:text-nowrap leading-none"
+      >
+        Инвестиции в будущее
+      </h2>
+      <span
+        class="bg-orange h-1.5 tablet:w-[224px] desktop:w-[244px] tablet:self-end desktop:self-end"
+      ></span>
+    </div>
+  </div>
+</section>
+
+<bb-wrapper>
+  <section class="flex justify-between flex-col desktop:flex-row gap-5 mb-10">
+    <div class="flex flex-col gap-3 desktop:flex-1">
+      <ng-container
+        *ngTemplateOutlet="
+          pokSubtitle;
+          context: { $implicit: 'Преимущества региона', bg: 'bg-blue' }
+        "
+      ></ng-container>
+      <div class="flex flex-col gap-3">
+        @for (adv of regionAdvantages(); track $index) {
+          <p class="leading-7">{{ adv }}</p>
+        }
+      </div>
+    </div>
+    <div
+      class="handset:w-[280px] handset:h-[474px] tablet:w-[443px] tablet:h-[748px] handset:mx-auto tablet:mx-auto desktop:flex-1 relative"
+    >
+      <img
+        ngSrc="assets/images/img/kuzbass-region.png"
+        fill
+        class="object-contain"
+        priority
+      />
+    </div>
+  </section>
+
+  <section
+    class="flex justify-between flex-col desktop:flex-row gap-5 mb-10 items-center"
+  >
+    <div class="flex flex-col gap-3 desktop:flex-1">
+      <ng-container
+        *ngTemplateOutlet="
+          pokSubtitle;
+          context: {
+            $implicit: 'Географическое и логистическое расположение',
+            bg: 'bg-orange',
+          }
+        "
+      ></ng-container>
+      <div class="w-full h-[269px] tablet:h-[563px] desktop:h-[563px] relative">
+        <img
+          ngSrc="assets/images/img/kuzbass-location.png"
+          fill
+          class="object-contain"
+          priority
+        />
+      </div>
+    </div>
+    <div class="flex flex-col gap-3 desktop:flex-1">
+      <p class="leading-7">
+        По территории Кемеровской области проходят участки Транссибирской и
+        Средне-Сибирской железнодорожных магистралей, что составляет основу
+        транспортной системы Российских железных дорог
+      </p>
+        
+      <p class="leading-7">
+         <span class="text-[32px] text-blue">22,2%</span> из
+        <span class="text-[32px] text-orange">257,7 млн.т</span>. экспортных
+        промышленных перевозок осуществляется железнодорожным транспортом
+      </p>
+      <p class="leading-7">
+        Международный аэропорт Новокузнецк им. Бориса Волынова обеспечивает
+        регулярные авиарейсы в Москву, Санкт-Петербург, Новосибирск, Красноярск
+        и Екатеринбург, а также международные авиалинии. В летний сезон в Анапу,
+        Симферополь и Сочи.
+      </p>
+      <p class="leading-7">
+        <span class="text-[32px] text-orange">100,46 тысяч</span> пассажиропоток
+        за рубеж через международные аэропорты Кузбасса
+      </p>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <ng-container
+      *ngTemplateOutlet="
+        pokSubtitle;
+        context: {
+          $implicit: 'Макропоказатели',
+          bg: 'bg-blue',
+        }
+      "
+    ></ng-container>
+    <div
+      class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-20 mt-20"
+    >
+      <dl>
+        <dt class="text-[80px] text-orange leading-9 mb-6">46.6%</dt>
+        <dd>Добыча полезных ископаемых</dd>
+      </dl>
+      <dl>
+        <dt class="text-[80px] text-orange leading-9 mb-6">15.5%</dt>
+        <dd>Транспортировка и хранение</dd>
+      </dl>
+      <dl>
+        <dt class="text-[80px] text-orange leading-9 mb-6">10.5%</dt>
+        <dd>Транспортировка и хранение</dd>
+      </dl>
+      <dl>
+        <dt class="text-[80px] text-blue leading-9 mb-6">7.7%</dt>
+        <dd>Обрабатывающие производства</dd>
+      </dl>
+      <dl>
+        <dt class="text-[80px] text-blue leading-9 mb-6">4.9%</dt>
+        <dd>
+          4.9% Обеспечение электрической энергией, газом и паром,
+          кондиционирование воздуха
+        </dd>
+      </dl>
+      <dl>
+        <dt class="text-[80px] text-blue leading-9 mb-6">9.9%</dt>
+        <dd>Обрабатывающие производства</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <ng-container
+      *ngTemplateOutlet="
+        pokSubtitle;
+        context: {
+          $implicit: 'Потенциал',
+          bg: 'bg-orange',
+        }
+      "
+    ></ng-container>
+    <div class="flex flex-col gap-3 desktop:max-w-[60%]">
+      <p class="leading-7">
+        По итогам 2021 года Кузбасс занял 12 место в Национальном рейтинге
+        состояния инвестиционного климата в субъектах Российской Федерации.
+      </p>
+      <p class="leading-7">
+        Территория опережающего социально-экономического развития —
+        экономическая зона с льготными налоговыми условиями, упрощёнными
+        административными процедурами и другими привилегиями в России,
+        создаваемая для привлечения инвестиций, ускоренного развития экономики и
+        улучшения жизни населения.
+      </p>
+      <p class="leading-7">
+        Кузбасс всегда рад инвесторам и деловым партнерам и будет и впредь
+        создавать все необходимые условия для успешной реализации инвестиционных
+        проектов.  Уважаемые инвесторы! Приглашаем посетить наш Кузбасс и
+        ознакомиться с его богатым потенциалом. Желаем всем нам взаимовыгодного
+        и плодотворного сотрудничества!
+      </p>
+    </div>
+  </section>
+</bb-wrapper>
+
+<ng-template #pokSubtitle let-bg="bg" let-title>
+  <div class="flex flex-col gap-3 text-[30px] font-semibold mb-10">
+    <h2 class="handset:leading-tight">{{ title }}</h2>
+    <span
+      class="h-1.5 w-[225px] tablet:w-[244px] desktop:w-[244px] {{ bg }}"
+    ></span>
+  </div>
+</ng-template>
