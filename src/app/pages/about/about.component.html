@@ -1,4 +1,16 @@
 <bb-wrapper>
   <bb-breadcrumbs [items]="items" />
   <bb-page-title title="О проекте" />
+  <div
+    class="flex flex-col tablet:flex-row desktop:flex-row gap-5 tablet:gap-[60px] desktop:gap-[70px] mb-[50px] mt-7 tablet:my-[50px] desktop:my-[60px]"
+  >
+    <bb-svg-icon name="logo-lg" />
+    <bb-svg-icon name="kuzbass" />
+  </div>
+
+  <div class="flex flex-col gap-5 desktop:max-w-[900px]">
+    @for (paragraph of aboutText(); track $index) {
+      <p class="leading-7">{{ paragraph }}</p>
+    }
+  </div>
 </bb-wrapper>
