@@ -10,7 +10,7 @@ import { Responsive } from '@core/shared/enums/enums'
   template: `
     <button
       (click)="handleClick()"
-      class="border border-grey-stroke2 rounded-lg  p-2.5 flex items-center gap-2 desktop:gap-3"
+      class="border border-grey-strok rounded-lg  p-2.5 flex items-center gap-2 desktop:gap-3"
     >
       <bb-svg-icon
         name="{{

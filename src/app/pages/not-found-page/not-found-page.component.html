@@ -1,4 +1,26 @@
 <bb-wrapper>
-  <bb-breadcrumbs [items]="items" />
-  <bb-page-title title="Страница не найдена" />
+  <div class="flex flex-col tablet:flex-row desktop:flex-row mb-[50px] gap-10">
+    <div>
+      <bb-breadcrumbs [items]="items" />
+      <bb-page-title
+        title="Извините,
+        страница не найдена"
+      />
+      <p class="text-xl mt-2 tablet:mt-4 desktop:mt-4 leading-snug">
+        Но на нашем сайте еще много интересного
+      </p>
+    </div>
+    <img
+      ngSrc="assets/images/img/404.png"
+      width="421"
+      height="288"
+      priority
+      class="mt-9"
+    />
+  </div>
+  <bb-plain-button
+    label="На главную"
+    className="w-full tablet:w-[185px] desktop:w-[185px] h-[50px] bg-orange text-white hover:bg-active-orange"
+    (click)="handleBackButton()"
+  ></bb-plain-button>
 </bb-wrapper>

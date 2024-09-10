@@ -45,6 +45,22 @@ export default [
           style: 'kebab-case',
         },
       ],
+
+      '@angular-eslint/template/elements-content': [
+        'error',
+        {
+          allowList: ['pButton'],
+        },
+      ],
+    },
+    files: ['**/*.html'],
+    rules: {
+      '@angular-eslint/template/elements-content': [
+        'error',
+        {
+          allowList: ['pButton'],
+        },
+      ],
     },
   },
   ...compat

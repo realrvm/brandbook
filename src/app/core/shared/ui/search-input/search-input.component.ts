@@ -27,7 +27,7 @@ import {
           isHeader()
             ? 'bg-white tablet:w-[254px] py-2.5 desktop:py-3'
             : 'bg-transparent tablet:w-[280px] py-3'
-        }} border-grey-stroke2 rounded-md pl-4 desktop:pl-6 w-full desktop:w-[500px]"
+        }} border-grey-strok rounded-md pl-4 desktop:pl-6 w-full desktop:w-[500px]"
         emptyMessage="Ничего не найдено"
         placeholder="Поиск по сайту"
       />
