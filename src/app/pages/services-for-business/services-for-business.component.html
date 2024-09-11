@@ -1,4 +1,55 @@
 <bb-wrapper>
   <bb-breadcrumbs [items]="items" />
   <bb-page-title title="Сервисы бизнесу" />
+  <section
+    class="mb-[144px] mt-[60px] grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-4"
+  >
+    @for (service of businessServices(); track $index; let odd = $odd) {
+      <ng-container
+        *ngTemplateOutlet="
+          bsCard;
+          context: {
+            $implicit: service.title,
+            odd,
+            path: service.path,
+            content: service.content,
+          }
+        "
+      />
+    }
+  </section>
 </bb-wrapper>
+
+<ng-template
+  #bsCard
+  let-title
+  let-path="path"
+  let-content="content"
+  let-odd="odd"
+>
+  <div
+    class="p-7 tablet:p-8 desktop:p-10 bg-light-grey flex flex-col justify-between gap-6 desktop:min-h-[500px] hover:outline hover:outline-orange"
+  >
+    <div class="flex flex-col gap-4">
+      <h3 class="font-semibold text-[22px] leading-tight">{{ title }}</h3>
+      <div class="h-1.5 w-[80%] {{ odd ? 'bg-blue' : 'bg-orange' }}"></div>
+      <ul class="flex flex-col gap-2">
+        @for (item of content.split(';'); track $index) {
+          <ol>
+            {{
+              item
+            }}
+          </ol>
+        }
+      </ul>
+    </div>
+    <div class="tablet:self-end desktop:self-end">
+      <bb-icon-button
+        label="Подробнее"
+        icon="right-arrow"
+        className="bg-orange text-white w-full tablet:w-[220px] desktop:w-[162px] h-[46px] hover:bg-active-orange"
+        (click)="handleMoreDetails(path)"
+      />
+    </div>
+  </div>
+</ng-template>
