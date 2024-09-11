@@ -1,4 +1,42 @@
 <bb-wrapper>
   <bb-breadcrumbs [items]="items" />
   <bb-page-title title="Сервисы инвестору" />
+  <section
+    class="mt-[60px] mb-[114px]  grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-2 gap-14 max-w-[700px]"
+  >
+    @for (card of investorServicesCards(); track $index) {
+      <ng-container
+        *ngTemplateOutlet="
+          sfiCard;
+          context: {
+            $implicit: card.title,
+            path: card.path,
+            icon: card.icon,
+            surface: card.surface,
+          }
+        "
+      />
+    }
+  </section>
 </bb-wrapper>
+
+<ng-template
+  #sfiCard
+  let-title
+  let-path="path"
+  let-icon="icon"
+  let-surface="surface"
+>
+  <div
+    class="p-10 bg-light-grey hover:outline hover:outline-orange max-w-[398px] flex flex-col gap-y-10"
+  >
+    <div class="flex items-center gap-3">
+      <bb-svg-icon [name]="icon" />
+      <h3 class="font-semibold text-[22px]">{{ title }}</h3>
+    </div>
+    <div class="{{ surface }} h-1.5 w-[80%]"></div>
+    <a [routerLink]="path" class="self-end mt-auto">
+      <bb-svg-icon [name]="'right-arrow-lg'" />
+    </a>
+  </div>
+</ng-template>
