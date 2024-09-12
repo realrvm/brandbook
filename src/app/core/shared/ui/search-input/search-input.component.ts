@@ -29,7 +29,7 @@ import {
             : 'bg-transparent tablet:w-[280px] py-3'
         }} border-grey-strok rounded-md pl-4 desktop:pl-6 w-full desktop:w-[500px]"
         emptyMessage="Ничего не найдено"
-        placeholder="Поиск по сайту"
+        [placeholder]="placeholder()"
       />
     </form>
   `,
@@ -41,6 +41,7 @@ import {
 })
 export class SearchInputComponent {
   public isHeader = input<boolean>(true)
+  public placeholder = input<string>('Поиск по сайту')
 
   public filteredItems = []
 

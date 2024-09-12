@@ -19,7 +19,7 @@ export const investorServicesCards = [
   },
   {
     title: 'Учебник',
-    path: '/services-for-investors/textbook',
+    path: '/services-for-investors/textbooks',
     icon: 'textbook',
     surface: 'bg-light-blue',
   },

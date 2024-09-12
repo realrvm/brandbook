@@ -8,6 +8,7 @@ import {
 
 import { routes } from './app.routes'
 import { provideHttpClient } from '@angular/common/http'
+import { ScrollManagerDirective } from '@core/directives/scroll-manager.directive'
 
 const scrollConfig: InMemoryScrollingOptions = {
   scrollPositionRestoration: 'top',
@@ -22,5 +23,9 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, inMemoryScrollingFeature),
     provideHttpClient(),
+    {
+      provide: ScrollManagerDirective,
+      useClass: ScrollManagerDirective,
+    },
   ],
 }

@@ -1,0 +1,64 @@
+<bb-wrapper>
+  <bb-breadcrumbs [items]="items" />
+  <bb-page-title title="Учебник" />
+
+  <div
+    class="flex flex-col tablet:flex-row desktop:flex-row flex-wrap gap-3 my-8"
+  >
+    @for (btn of textbooksButtons(); track btn.id) {
+      <bb-plain-button
+        [label]="btn.label"
+        className="{{
+          btn.isActive
+            ? 'bg-orange text-white hover:bg-active-orange border-orange hover:border-active-orange'
+            : 'text-orange bg-transparent hover:border-orange'
+        }}  border border-grey-strok"
+        (click)="handleSortBtn(btn.id)"
+      />
+    }
+  </div>
+
+  <bb-search-input placeholder="Поиск по учебнику" class="mb-16" />
+
+  <div
+    class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-x-3 gap-y-5"
+  >
+    @for (tb of textbooksList(); track tb['id']) {
+      <ng-container
+        *ngTemplateOutlet="
+          tbCard;
+          context: {
+            $implicit: tb['title'],
+            date: tb['date'],
+            content: tb['content'],
+            img: tb['img'],
+            id: tb['id'],
+          }
+        "
+      />
+    }
+  </div>
+</bb-wrapper>
+
+<ng-template
+  #tbCard
+  let-title
+  let-date="date"
+  let-content="content"
+  let-img="img"
+  let-id="id"
+>
+  <div
+    class="tablet:max-w-[413px] desktop:max-w-[413px] min-h-[432px] pb-8 flex flex-col justify-between cursor-pointer bg-white border-b border-b-[6px] border-transparent hover:border-b-orange"
+    (click)="handleTBCardClick(id)"
+  >
+    <div class="flex flex-col gap-4">
+      <div class="h-[197px] relative">
+        <img ngSrc="{{ img }}" className="object-cover" fill />
+      </div>
+      <span class="text-sm text-grey-indicator px-8">{{ date }}</span>
+      <h3 class="font-semibold text-[26px] px-8 leading-[115%]">{{ title }}</h3>
+    </div>
+    <p class="text-md px-8">{{ content }}</p>
+  </div>
+</ng-template>

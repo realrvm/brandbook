@@ -9,7 +9,7 @@ import { NgIf } from '@angular/common'
   imports: [BreadcrumbModule, NgIf],
   template: ` <p-breadcrumb
     [model]="items()"
-    styleClass="px-0 my-5 handset:hidden text-sm"
+    styleClass="px-0 my-5 handset:hidden text-sm bg-transparent"
   >
     <ng-template pTemplate="item" let-item>
       <ng-container *ngIf="item.route; else currentPage">

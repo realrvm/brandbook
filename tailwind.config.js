@@ -38,6 +38,7 @@ module.exports = {
       'active-black': 'var(--active-black)',
       'shadow-grey': 'var(--shadow-grey)',
       'hover-blue': 'var(--hover-blue)',
+      transparent: 'transparent',
     },
     fontFamily: {
       gilroy: ['Gilroy', 'sans-serif'],

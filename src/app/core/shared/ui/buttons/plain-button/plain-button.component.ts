@@ -21,6 +21,6 @@ import { ButtonModule } from 'primeng/button'
   `,
 })
 export class PlainButtonComponent {
-  public label = input<string>('')
+  public label = input.required<string>()
   public className = input<string>('')
 }
