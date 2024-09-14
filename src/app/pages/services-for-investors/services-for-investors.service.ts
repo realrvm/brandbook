@@ -3,9 +3,7 @@ import { Observable, of } from 'rxjs'
 import { investorServicesCards } from './services-for-investors'
 import { toSignal } from '@angular/core/rxjs-interop'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ServicesForInvestorsService {
   private fetchInvestorServicesCards(): Observable<
     typeof investorServicesCards

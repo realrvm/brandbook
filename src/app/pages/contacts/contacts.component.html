@@ -1,1 +1,39 @@
-<h1 class="text-3xl font-bold">Контакты</h1>
+<bb-wrapper>
+  <bb-breadcrumbs [items]="items" />
+  <bb-page-title title="Контакты" />
+
+  @let contactsItems = contacts();
+  <div
+    class="mt-3 tablet:mt-6 desktop:mt-7 flex flex-col gap-7 mb-[90px] tablet:mb-[130px] desktop:mb-[240px]"
+  >
+    <div class="flex items-center gap-5">
+      <img
+        ngSrc="assets/images/img/emblem.png"
+        width="60"
+        height="69"
+        alt="image"
+      />
+      <h3 class="font-semibold text-[22px]">{{ contactsItems.title }}</h3>
+    </div>
+    <div class="flex items-center gap-3">
+      <bb-svg-icon name="location" />
+      <h5 class="text-md">{{ contactsItems.address }}</h5>
+    </div>
+    <div
+      class="flex flex-col tablet:flex-row desktop:flex-row gap-5 tablet:gap-10 desktop:gap-10"
+    >
+      <div class="flex items-center gap-3">
+        <bb-svg-icon name="phone" />
+        <a href="tel:">{{ contactsItems.phone }}</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <bb-svg-icon name="email" />
+        <a href="mailto:" class="text-light-blue">{{ contactsItems.email }}</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <bb-svg-icon name="www" />
+      <a href="*" class="text-light-blue">{{ contactsItems.www }}</a>
+    </div>
+  </div>
+</bb-wrapper>

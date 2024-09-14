@@ -3,9 +3,7 @@ import { textbooksList } from './textbooks'
 import { Observable, of } from 'rxjs'
 import { toSignal } from '@angular/core/rxjs-interop'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class TextbooksService {
   private fetchTextbooksList(): Observable<typeof textbooksList> {
     return of(textbooksList)

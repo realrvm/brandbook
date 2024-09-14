@@ -3,9 +3,7 @@ import { businessServices } from './services-for-business'
 import { Observable, of } from 'rxjs'
 import { toSignal } from '@angular/core/rxjs-interop'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ServicesForBusinessService {
   private fetchBusinessServices(): Observable<typeof businessServices> {
     return of(businessServices)

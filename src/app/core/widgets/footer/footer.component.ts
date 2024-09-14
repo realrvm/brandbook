@@ -6,7 +6,7 @@ import { SearchInputComponent } from '@core/shared/ui/search-input/search-input.
 import { SvgIconComponent } from '@core/shared/ui/svg-icon/svg-icon.component'
 import { VisuallyImpairedComponent } from '@core/shared/ui/visually-impaired/visually-impaired.component'
 import { WrapperComponent } from '@core/wrapper/wrapper.component'
-import { navItems } from '../nav-items'
+import { navItems, navItemsFooter } from '../nav-items'
 
 @Component({
   selector: 'bb-footer',
@@ -23,7 +23,7 @@ import { navItems } from '../nav-items'
 })
 export class FooterComponent {
   private responsiveService = inject(ResponsiveService)
-  public navItems = signal(navItems).asReadonly()
+  public navItems = signal([...navItems, ...navItemsFooter]).asReadonly()
 
   private width = this.responsiveService.width
   public isHandset = computed(() => this.width() === Responsive.HANDSET)

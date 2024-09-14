@@ -3,9 +3,7 @@ import { Observable, of } from 'rxjs'
 import { regionAdvantages } from './potential-of-kuzbass'
 import { toSignal } from '@angular/core/rxjs-interop'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class PotentialOfKuzbassService {
   private fetchRegionAdvantages(): Observable<string[]> {
     return of(regionAdvantages)

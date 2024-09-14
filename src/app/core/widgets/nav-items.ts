@@ -8,3 +8,8 @@ export const navItems = [
   { path: 'services', text: 'Сервисы платформы' },
   { path: 'about', text: 'О проекте' },
 ]
+
+export const navItemsFooter = [
+  { path: 'contacts', text: 'Контакты' },
+  { path: 'privacy-policy', text: 'Политика конфиденциальности' },
+]

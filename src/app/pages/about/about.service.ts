@@ -3,9 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop'
 import { Observable, of } from 'rxjs'
 import { aboutText } from './about'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AboutService {
   //TODO: use a real API
   private fetchAboutText(): Observable<string[]> {
