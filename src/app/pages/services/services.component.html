@@ -1,4 +1,64 @@
 <bb-wrapper>
   <bb-breadcrumbs [items]="items" />
   <bb-page-title title="Сервисы платформы" />
+  <div class="mt-12 mb-[95px] tablet:mb-[86px] desktop:mb-[143px]">
+    <div
+      class="flex flex-col tablet:flex-row desktop:flex-row flex-wrap gap-3 mb-12"
+    >
+      @for (btn of sortButtons(); track btn.id) {
+        <bb-plain-button
+          [label]="btn.label"
+          className="{{
+            btn.isActive
+              ? 'bg-orange text-white hover:bg-active-orange border-orange hover:border-active-orange'
+              : 'text-orange bg-transparent hover:border-orange'
+          }}  border border-grey-strok"
+          (click)="handleSortBtn(btn.id)"
+        />
+      }
+    </div>
+
+    <bb-search-input
+      placeholder="Имя, регистрационный номер или ISIN"
+      customStyles="mb-8 handset:w-full tablet:!w-[80%]"
+    />
+
+    <section class="flex flex-col desktop:flex-row gap-6 mb-[74px]">
+      <div class="flex-1 desktop:flex-[70%] flex flex-col gap-6">
+        <div
+          class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-2 gap-3"
+        >
+          @for (meetup of meetups(); track meetup.id) {
+            <bb-services-card
+              [title]="meetup.title"
+              [content]="meetup.content"
+              [date]="meetup.date"
+              [endDate]="meetup.endDate"
+              [img]="meetup.img"
+            />
+          }
+        </div>
+        <div class="self-end">
+          <bb-plain-button
+            label="Показать ещё"
+            className="bg-transparent text-orange border border-grey-strok hover:border-orange"
+            (click)="handleMeetupsBtn()"
+          />
+        </div>
+      </div>
+      <div
+        class="flex-1 desktop:flex-[30%] flex flex-col tablet:flex-row gap-6 order-first tablet:order-first desktop:order-last"
+      >
+        <bb-services-calendar />
+        <bb-services-subscription />
+      </div>
+    </section>
+
+    @let finance = servicesFinancing();
+    <bb-services-financing [content]="finance.content" />
+
+    <bb-services-form />
+
+    <bb-services-questions />
+  </div>
 </bb-wrapper>

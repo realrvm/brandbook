@@ -32,6 +32,7 @@ export class ServicesForBusinessComponent {
   public businessServices = this.sbService.businessServices
 
   public handleMoreDetails(path: string) {
+    alert('TODO: куда ведёт переход по клику?')
     this.router.navigate([path])
   }
 }
