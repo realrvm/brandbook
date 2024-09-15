@@ -10,7 +10,7 @@ import { CheckboxModule } from 'primeng/checkbox'
 import { PlainButtonComponent } from '@core/shared/ui/buttons/plain-button/plain-button.component'
 
 @Component({
-  selector: 'bb-services-subscription',
+  selector: 'bb-subscription-form',
   standalone: true,
   imports: [
     PlainButtonComponent,
@@ -20,7 +20,7 @@ import { PlainButtonComponent } from '@core/shared/ui/buttons/plain-button/plain
     CheckboxModule,
   ],
   template: `
-    <div class="rounded-2xl bg-light-grey min-h-[256px] p-8">
+    <div class="rounded-2xl bg-light-grey min-h-[256px] p-8 tablet:p-4">
       <h3 class="font-semibold text-[25px] mb-4">Подписаться на новости</h3>
       <div class="flex items-center mb-5">
         <span class="h-1.5 w-1/2 bg-orange"></span>
@@ -34,7 +34,7 @@ import { PlainButtonComponent } from '@core/shared/ui/buttons/plain-button/plain
           class="w-full mb-7 px-5 py-3 rounded-md"
           formControlName="email"
         />
-        <div class="flex items-center justify-between gap-3">
+        <div class="flex tablet:flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-2">
             <p-checkbox formControlName="agree" value="true" />
             <span class="text-[10px] text-grey-indicator"
@@ -46,7 +46,7 @@ import { PlainButtonComponent } from '@core/shared/ui/buttons/plain-button/plain
           </div>
           <bb-plain-button
             label="Подписаться"
-            className="bg-orange text-white hover:bg-active-orange h-10"
+            className="bg-orange text-white hover:bg-active-orange h-10 tablet:w-full"
             (click)="handleSubscriptionClick()"
           />
         </div>
@@ -79,7 +79,7 @@ import { PlainButtonComponent } from '@core/shared/ui/buttons/plain-button/plain
     }
   `,
 })
-export class ServicesSubscriptionComponent {
+export class SubscriptionFormComponent {
   public form = new FormGroup({
     email: new FormControl(''),
     agree: new FormControl(false),

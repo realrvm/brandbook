@@ -10,8 +10,8 @@ import { ServicesFinancingComponent } from './services-financing/services-financ
 import { ServicesFormComponent } from './services-form/services-form.component'
 import { ServicesQuestionsComponent } from './services-questions/services-questions.component'
 import { ServicesCalendarComponent } from './services-calendar/services-calendar.component'
-import { ServicesSubscriptionComponent } from './services-subscription/services-subscription.component'
 import { ServicesService } from './services.service'
+import { SubscriptionFormComponent } from '@core/widgets/subscription-form/subscription-form.component'
 
 @Component({
   selector: 'bb-services',
@@ -27,7 +27,7 @@ import { ServicesService } from './services.service'
     ServicesFormComponent,
     ServicesQuestionsComponent,
     ServicesCalendarComponent,
-    ServicesSubscriptionComponent,
+    SubscriptionFormComponent,
   ],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss',
