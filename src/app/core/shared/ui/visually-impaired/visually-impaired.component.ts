@@ -17,7 +17,8 @@ import { Responsive } from '@core/shared/enums/enums'
           isDesktop() ? 'visually-impaired-md' : 'visually-impaired-sm'
         }}"
       ></bb-svg-icon>
-      <span class="text-[9px] desktop:text-sm text-left text-blue leading-none"
+      <span
+        class="text-[9px] desktop:text-sm text-left text-blue hover:text:hover-blue leading-none"
         >Версия для <br />
         слабовидящих</span
       >

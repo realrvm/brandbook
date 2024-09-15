@@ -25,14 +25,19 @@ import {
         field="name"
         styleClass="border {{
           isHeader()
-            ? 'bg-white tablet:w-[254px] py-2.5 desktop:py-3'
-            : 'bg-transparent tablet:w-[280px] py-3'
-        }} border-grey-strok rounded-md pl-4 desktop:pl-6 w-full desktop:w-[500px] {{
+            ? 'tablet:w-[254px] py-2.5 desktop:py-3 bg-bkgrnd'
+            : 'tablet:w-[280px] py-3'
+        }} border-grey-strok hover:border-orange rounded-md pl-4 desktop:pl-6 w-full desktop:w-[500px] {{
           customStyles()
         }}"
+        inputStyleClass="bg-transparent"
         emptyMessage="Ничего не найдено"
         [placeholder]="placeholder()"
-      />
+      >
+        <ng-template pTemplate="dropdownicon">
+          <i class="pi pi-search text-grey-text"></i>
+        </ng-template>
+      </p-autoComplete>
     </form>
   `,
   styles: `
