@@ -1,0 +1,51 @@
+<bb-main-section [title]="title">
+  <div
+    class="flex flex-col tablet:flex-row desktop:flex-row flex-wrap gap-3 my-10"
+  >
+    @for (btn of publicationsBtns(); track btn.id) {
+      <bb-plain-button
+        [label]="btn.label"
+        className="{{
+          btn.isActive
+            ? 'bg-orange text-white hover:bg-active-orange border-orange hover:border-active-orange'
+            : 'text-orange bg-transparent hover:border-orange'
+        }}  border border-grey-strok"
+        (click)="handleSortBtn(btn.id)"
+      />
+    }
+  </div>
+  <div class="flex flex-col gap-x-6 gap-y-10">
+    <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-[2fr_1fr_1fr] gap-6">
+      <ng-container *ngTemplateOutlet="mainPublicationsCard" />
+      <ng-container *ngTemplateOutlet="mainPublicationsCard" />
+      <ng-container *ngTemplateOutlet="mainPublicationsCard" />
+    </div>
+    <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-[1fr_1fr_2fr] gap-6">
+      <ng-container *ngTemplateOutlet="mainPublicationsCard" />
+      <ng-container *ngTemplateOutlet="mainPublicationsCard" />
+      <ng-container *ngTemplateOutlet="mainPublicationsCard" />
+    </div>
+  </div>
+</bb-main-section>
+
+<ng-template #mainPublicationsCard>
+  <div class="flex flex-col">
+    <div class="h-[236px] relative mb-10">
+      <img
+        ngSrc="assets/images/img/dummy/dummy3.jpg"
+        class="object-cover"
+        fill
+        alt="publications"
+      />
+    </div>
+    <h4 class="font-semibold text-[23px] mb-5">
+      Главное на рынке облигаций 2024
+    </h4>
+    <p class="font-md mb-8">
+      Развитие сельскохозяйственной отрасли в условиях экономического кризиса,
+      нестандартные пути решения. Развитие сельскохозяйственной отрасли в
+      условиях экономического кризиса, нестандартные пути решения
+    </p>
+    <span class="text-orange text-sm">Биржа / Торги / IT-технологии</span>
+  </div>
+</ng-template>

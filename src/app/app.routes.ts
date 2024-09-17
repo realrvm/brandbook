@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router'
 import { MainComponent } from '@pages/main/main.component'
+import { MainService } from '@pages/main/main.service'
 import { NotFoundPageComponent } from '@pages/not-found-page/not-found-page.component'
 
 export const routes: Routes = [
@@ -8,7 +9,7 @@ export const routes: Routes = [
     redirectTo: 'main',
     pathMatch: 'full',
   },
-  { path: 'main', component: MainComponent },
+  { path: 'main', providers: [MainService], component: MainComponent },
   {
     path: 'services-for-business',
     loadChildren: () =>
