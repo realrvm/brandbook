@@ -14,9 +14,71 @@
   }
 </div>
 
-<div class="flex items-center justify-between gap-10">
-  <bb-search-input
-    placeholder="Имя, регистрационный номер или ISIN"
+<div
+  class="flex flex-wrap tablet:justify-between desktop:justify-between gap-6 mb-14"
+>
+  <bb-search-input placeholder="Имя, регистрационный номер или ISIN" />
+  <bb-dropdown
+    customStyles="w-[300px] desktop:w-[450px]"
+    placeholder="Сортировать по"
+    [options]="searchOptions()"
   />
-  <bb-multi-select-input />
+</div>
+
+<div class="flex flex-col tablet:flex-row desktop:flex-row gap-7 mb-10">
+  <div
+    class="w-full tablet:w-[270px] desktop:max-w-[270px] flex flex-col gap-9 tablet:order-last"
+  >
+    <bb-search-aside-list title="Отрасли" [searchItems]="industries()" />
+
+    <div class="flex flex-col gap-3">
+      <label class="text-[16px]">Статус</label>
+      <bb-dropdown
+        placeholder="Выбрать"
+        customStyles="w-full"
+        [options]="statusOptions()"
+      />
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <label class="text-[16px]">Периодичность выплаты купона</label>
+      <div class="grid grid-cols-2 gap-5">
+        <bb-dropdown
+          placeholder="От"
+          customStyles="w-full"
+          [options]="fromToOptions()"
+        />
+        <bb-dropdown
+          placeholder="До"
+          customStyles="w-full"
+          [options]="fromToOptions()"
+        />
+      </div>
+    </div>
+    <bb-search-aside-list
+      title="Наименование организатора"
+      [searchItems]="regions()"
+    />
+
+    <div class="flex flex-col gap-3">
+      <label class="text-[16px]">Рейтинг эмитента</label>
+      <div class="grid grid-cols-2 gap-5">
+        <bb-dropdown
+          placeholder="От"
+          customStyles="w-full"
+          [options]="fromToOptions()"
+        />
+        <bb-dropdown
+          placeholder="До"
+          customStyles="w-full"
+          [options]="fromToOptions()"
+        />
+      </div>
+    </div>
+    <bb-search-aside-list
+      title="Регион регистрации эмитента"
+      [searchItems]="regions()"
+    />
+  </div>
+  <ng-content />
 </div>

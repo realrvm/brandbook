@@ -1,0 +1,17 @@
+<div
+  class="w-full tablet:w-[270px] desktop:max-w-[270px] rounded-lg bg-light-grey p-6"
+>
+  <div class="pb-3 border-b border-b-bkgrnd">
+    <h5 class="text-[16px]">{{ title() }}</h5>
+  </div>
+  <form [formGroup]="form" class="py-3">
+    <div class="flex flex-col gap-2 h-[130px] overflow-y-auto">
+      @for (searchItem of searchItems(); track searchItem.id) {
+        <div class="flex gap-2 items-center justify-between pr-5">
+          <span class="text-[16px] font-semibold">{{ searchItem.name }}</span>
+          <p-checkbox formControlName="checked" value="true" />
+        </div>
+      }
+    </div>
+  </form>
+</div>

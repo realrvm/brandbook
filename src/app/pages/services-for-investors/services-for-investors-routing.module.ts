@@ -3,11 +3,16 @@ import { RouterModule, Routes } from '@angular/router'
 import { ServicesForInvestorsComponent } from './services-for-investors.component'
 import { TextbooksService } from './textbooks/textbooks.service'
 import { ServicesForInvestorsService } from './services-for-investors.service'
+import { SearchTemplateService } from './search-template/search-template.service'
 
 const routes: Routes = [
   {
     path: '',
-    providers: [TextbooksService, ServicesForInvestorsService],
+    providers: [
+      TextbooksService,
+      ServicesForInvestorsService,
+      SearchTemplateService,
+    ],
     children: [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'main', component: ServicesForInvestorsComponent },

@@ -1,5 +1,11 @@
 <bb-wrapper>
   <bb-breadcrumbs [items]="items" />
   <bb-page-title title="Поиск цифровых финансовых активов" />
-  <bb-search-template></bb-search-template>
+  <bb-search-template>
+    <div class="flex flex-col gap-7 w-full desktop:mb-[120px]">
+      @for (item of array; track $index) {
+        <bb-active-search-card />
+      }
+    </div>
+  </bb-search-template>
 </bb-wrapper>

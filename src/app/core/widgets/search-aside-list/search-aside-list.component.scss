@@ -1,0 +1,32 @@
+:host {
+  @apply block;
+
+  ::ng-deep .p-checkbox-box {
+    @apply border border-grey-strok;
+  }
+
+  ::ng-deep .p-checkbox-box.p-highlight {
+    @apply border border-transparent bg-orange;
+  }
+
+  ::ng-deep .p-checkbox-box.p-focus {
+    @apply shadow-none border border-orange;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--grey-indicator);
+    border-radius: 10px;
+  }
+}
