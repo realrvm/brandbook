@@ -9,7 +9,7 @@ import { ButtonModule } from 'primeng/button'
     <button
       pButton
       label="{{ label() }}"
-      class="flex items-center justify-center font-semibold rounded-[9px] py-1.5 px-5 {{
+      class="flex items-center shadow-none justify-center font-semibold rounded-[9px] py-1.5 px-5 {{
         className()
       }}"
     ></button>

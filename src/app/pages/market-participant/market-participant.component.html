@@ -1,4 +1,190 @@
 <bb-wrapper>
   <bb-breadcrumbs [items]="items" />
   <bb-page-title title="Участники рынка" />
+
+  <div
+    class="flex flex-col tablet:flex-row desktop:flex-row desktop:justify-between flex-wrap gap-x-1 gap-y-3 my-8"
+  >
+    @for (btn of participantBtns(); track btn.id) {
+      <bb-plain-button
+        [label]="btn.label"
+        className="{{
+          btn.isActive
+            ? 'bg-orange text-white hover:bg-active-orange border-orange hover:border-active-orange'
+            : 'text-orange bg-transparent hover:border-orange'
+        }}  border border-grey-strok"
+        (click)="handleSortBtn(btn.id)"
+      />
+    }
+  </div>
+
+  <div class="flex items-center justify-between mb-14">
+    <bb-search-input placeholder="Поиск проектов" />
+    <div class="handset:hidden flex gap-2">
+      <button
+        (click)="handleListClick(true)"
+        class="outline-none {{
+          isList ? 'text-orange' : 'text-grey-indicator'
+        }}"
+      >
+        <bb-svg-icon name="chess" />
+      </button>
+      <button
+        (click)="handleListClick(false)"
+        class="outline-none {{
+          !isList ? 'text-orange' : 'text-grey-indicator'
+        }}"
+      >
+        <bb-svg-icon name="list" />
+      </button>
+    </div>
+  </div>
+
+  @if (isList) {
+    <div
+      class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-5 gap-2.5 handset:mb-[86px] mb-[106px]"
+    >
+      @for (card of mpCards(); track card.id) {
+        <ng-container
+          *ngTemplateOutlet="
+            mpVerticalCard;
+            context: {
+              $implicit: card.title,
+              id: card.id,
+              emits: card.emits,
+              stocks: card.stocks,
+              bonds: card.bonds,
+              noExchange: card.noExchange,
+              res: card.res,
+            }
+          "
+        />
+      }
+    </div>
+  } @else {
+    <div class="flex flex-col gap-5 handset:mb-[86px] mb-[106px]">
+      @for (card of mpCards(); track card.id) {
+        <ng-container
+          *ngTemplateOutlet="
+            mpHorizontalCard;
+            context: {
+              $implicit: card.title,
+              id: card.id,
+              emits: card.emits,
+              stocks: card.stocks,
+              bonds: card.bonds,
+              noExchange: card.noExchange,
+              res: card.res,
+            }
+          "
+        />
+      }
+    </div>
+  }
 </bb-wrapper>
+
+<ng-template
+  #mpVerticalCard
+  let-title
+  let-emits="emits"
+  let-stocks="stocks"
+  let-bonds="bonds"
+  let-noExchange="noExchange"
+  let-res="res"
+  let-id="id"
+>
+  <div
+    tabindex="0"
+    class="px-6 py-7 border-t-[6px] focus-visible:border-t-orange outline-none border-t-transparent hover:border-t-orange bg-white cursor-pointer"
+    (click)="handleCardClick(id)"
+    (keypress)="handleCardClick(id)"
+  >
+    <div>
+      <h3 class="mb-14 font-semibold text-[28px] hover:underline">
+        {{ title }}
+      </h3>
+      <div
+        class="grid grid-cols-2 gap-3 border-b border-b-2 border-b-light-grey mb-2 pb-4"
+      >
+        <dl>
+          <dt class="font-semibold text-[17px] text-blue leading-none">
+            {{ emits }}
+          </dt>
+          <dd class="text-[10px]">эмитентов</dd>
+        </dl>
+        <dl>
+          <dt class="font-semibold text-[17px] text-orange leading-none">
+            {{ stocks }}
+          </dt>
+          <dd class="text-[10px]">выпусков акций</dd>
+        </dl>
+        <dl>
+          <dt class="font-semibold text-[17px] text-orange leading-none">
+            {{ bonds }}
+          </dt>
+          <dd class="text-[10px]">выпусков облигаций</dd>
+        </dl>
+        <dl>
+          <dt class="font-semibold text-[17px] text-orange leading-none">
+            {{ noExchange }}
+          </dt>
+          <dd class="text-[10px]">внебиржевых выпусков</dd>
+        </dl>
+      </div>
+    </div>
+    <h4 class="font-semibold text-[23px] text-center">{{ res }}</h4>
+  </div>
+</ng-template>
+
+<ng-template
+  #mpHorizontalCard
+  let-title
+  let-emits="emits"
+  let-stocks="stocks"
+  let-bonds="bonds"
+  let-noExchange="noExchange"
+  let-res="res"
+  let-id="id"
+>
+  <div
+    tabindex="0"
+    class="max-w-[765px] px-10 py-7 border-t-[6px] focus-visible:border-t-orange outline-none border-t-transparent hover:border-t-orange bg-white cursor-pointer"
+    (click)="handleCardClick(id)"
+    (keypress)="handleCardClick(id)"
+  >
+    <div>
+      <h3 class="mb-14 font-semibold text-[28px] hover:underline">
+        {{ title }}
+      </h3>
+      <div
+        class="grid grid-cols-4 gap-3 border-b border-b-2 border-b-light-grey mb-2 pb-4"
+      >
+        <dl>
+          <dt class="font-semibold text-[17px] text-blue leading-none">
+            {{ emits }}
+          </dt>
+          <dd class="text-md">эмитентов</dd>
+        </dl>
+        <dl>
+          <dt class="font-semibold text-[17px] text-orange leading-none">
+            {{ stocks }}
+          </dt>
+          <dd class="text-md">выпусков акций</dd>
+        </dl>
+        <dl>
+          <dt class="font-semibold text-[17px] text-orange leading-none">
+            {{ bonds }}
+          </dt>
+          <dd class="text-md">выпусков облигаций</dd>
+        </dl>
+        <dl>
+          <dt class="font-semibold text-[17px] text-orange leading-none">
+            {{ noExchange }}
+          </dt>
+          <dd class="text-md">внебиржевых выпусков</dd>
+        </dl>
+      </div>
+    </div>
+    <h4 class="font-semibold text-[32px] text-right">{{ res }}</h4>
+  </div>
+</ng-template>
