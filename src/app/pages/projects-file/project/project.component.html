@@ -1,0 +1,61 @@
+<bb-wrapper>
+  <bb-breadcrumbs [items]="items" />
+  <bb-page-title [title]="title" />
+
+  <section
+    class="grid handset:grid-cols-1 grid-cols-[3fr_1fr] tablet:gap-[40px] desktop:gap-[80px]"
+  >
+    <div>
+      <div class="mt-9 mb-[67px] flex handset:flex-col flex-row gap-[74px]">
+        <bb-svg-icon [name]="projectData().img" />
+        <p class="text-md max-w-[80%]">
+          {{ projectData().descr }}
+        </p>
+      </div>
+
+      <div class="mb-16">
+        <h2 class="font-semibold text-[24px] mb-6">Облигации</h2>
+        <div class="bg-light-grey py-3 px-4 border-b-[6px] border-b-blue">
+          <h3 class="text-[20px] font-semibold leading-relaxed">
+            ИнфоВотч-000А-00
+          </h3>
+          <p class="text-md mb-3">Купон 0%</p>
+          <div class="grid grid-cols-2 font-md">
+            <span>MIXES ISIN</span>
+            <span>Объём выпуска 0 шт.</span>
+            <span>Номер</span>
+            <span>Статус Готовится</span>
+            <span>Дата начала торгов</span>
+            <span>Номинал 1 000 ₽</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-9 mb-9">
+        <h3 class="font-semibold text-[24px] mb-6">Контакты</h3>
+        <div class="pl-10">
+          <div class="mb-8 text-md">
+            <p>{{ contacts.address }}</p>
+          </div>
+          <div class="flex handset:flex-col flex-row gap-10 text-blue text-md">
+            <p>{{ contacts.phone }}</p>
+            <p>{{ contacts.email }}</p>
+            <p>{{ contacts.www }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="flex flex-col gap-10 handset:hidden">
+      @for (asideItem of asideMenuItems; track asideItem.id) {
+        <li>
+          <a
+            routerLink="{{ asideItem.link }}"
+            routerLinkActive="active-link"
+            class="text-md font-semibold hover:text-orange"
+            >{{ asideItem.caption }}</a
+          >
+        </li>
+      }
+    </ul>
+  </section>
+</bb-wrapper>

@@ -1,4 +1,148 @@
 <bb-wrapper>
   <bb-breadcrumbs [items]="items" />
   <bb-page-title title="Картотека проектов" />
+
+  <div class="flex handset:flex-col flex-row flex-wrap gap-3 my-8">
+    @for (btn of pfBtns(); track btn.id) {
+      <bb-plain-button
+        [label]="btn.label"
+        className="{{
+          btn.isActive
+            ? 'bg-orange text-white hover:bg-active-orange border-orange hover:border-active-orange'
+            : 'text-orange bg-transparent hover:border-orange'
+        }}  border border-grey-strok"
+        (click)="handleSortBtn(btn.id)"
+      />
+    }
+  </div>
+
+  <div class="flex items-center justify-between mb-14">
+    <bb-search-input placeholder="Поиск проектов" />
+    <div class="handset:hidden flex gap-2">
+      <button
+        (click)="handleListClick(true)"
+        class="outline-none {{
+          isList ? 'text-orange' : 'text-grey-indicator'
+        }}"
+      >
+        <bb-svg-icon name="chess" />
+      </button>
+      <button
+        (click)="handleListClick(false)"
+        class="outline-none {{
+          !isList ? 'text-orange' : 'text-grey-indicator'
+        }}"
+      >
+        <bb-svg-icon name="list" />
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="flex handset:flex-wrap tablet:flex-wrap handset:gap-4 gap-8 handset:mg-[88px] mb-[111px]"
+  >
+    <div class="flex flex-col gap-4 handset:w-full min-w-[270px]">
+      <bb-search-aside-list title="Отрасль" [searchItems]="pfIndustries()" />
+      <bb-search-aside-list
+        title="Город регистрации"
+        [searchItems]="pfRegions()"
+      />
+      <bb-search-aside-list title="Выручка" [searchItems]="pfProceeds()" />
+    </div>
+    <div class="flex-1 tablet:min-w-[300px]">
+      @if (!isList) {
+        <div class="flex flex-col gap-4">
+          @for (card of pfCards(); track card.id) {
+            <ng-container
+              *ngTemplateOutlet="
+                nfHorizontalCard;
+                context: {
+                  $implicit: card.title,
+                  descr: card.descr,
+                  tags: card.tags,
+                  id: card.id,
+                }
+              "
+            />
+          }
+        </div>
+      } @else {
+        <div class="grid grid-cols-1 desktop:grid-cols-2 gap-4">
+          @for (card of pfCards(); track card.id) {
+            <ng-container
+              *ngTemplateOutlet="
+                nfVerticalCard;
+                context: {
+                  $implicit: card.title,
+                  img: card.img,
+                  tags: card.tags,
+                  id: card.id,
+                }
+              "
+            />
+          }
+        </div>
+      }
+    </div>
+  </div>
 </bb-wrapper>
+
+<ng-template
+  #nfVerticalCard
+  let-title
+  let-img="img"
+  let-tags="tags"
+  let-id="id"
+>
+  <div
+    tabindex="0"
+    class="cursor-pointer w-full border-t-[6px] border-t-transparent hover:border-t-orange"
+    (click)="handlePFCardClick(id)"
+    (keypress)="handlePFCardClick(id)"
+  >
+    <div class="relative h-[197px] w-full">
+      <img [ngSrc]="img" alt="img" fill class="object-cover" />
+    </div>
+    <div class="px-9 py-7 bg-light-grey">
+      <h3 class="font-semibold text-[32px] mb-10">{{ title }}</h3>
+      <div class="flex gap-2">
+        @for (tag of tags; track $index; let first = $first) {
+          <span></span>
+          <span class="{{ first ? 'text-orange' : 'text-blue' }} font-md">{{
+            tag
+          }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template
+  #nfHorizontalCard
+  let-title
+  let-descr="descr"
+  let-tags="tags"
+  let-id="id"
+>
+  <div
+    tabindex="0"
+    class="bg-light-grey"
+    (click)="handlePFCardClick(id)"
+    (keypress)="handlePFCardClick(id)"
+  >
+    <div
+      class="px-9 py-7 cursor-pointer border-t-[6px] border-t-transparent hover:border-t-orange"
+    >
+      <h3 class="font-semibold text-[32px] mb-10">{{ title }}</h3>
+      <p class="text-md mb-8">{{ descr }}</p>
+      <div class="flex gap-2">
+        @for (tag of tags; track $index; let first = $first) {
+          <span></span>
+          <span class="{{ first ? 'text-orange' : 'text-blue' }} font-md">{{
+            tag
+          }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</ng-template>
