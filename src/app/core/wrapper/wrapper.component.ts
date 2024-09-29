@@ -5,7 +5,7 @@ import { Component } from '@angular/core'
   standalone: true,
   imports: [],
   template: `
-    <div class="max-w-[1300px] w-full px-5 mx-auto">
+    <div class="max-w-[1300px] w-full px-5 mx-auto h-full">
       <ng-content />
     </div>
   `,
