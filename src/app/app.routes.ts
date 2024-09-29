@@ -74,5 +74,12 @@ export const routes: Routes = [
         (m) => m.PrivacyPolicyModule,
       ),
   },
+  {
+    path: 'history-of-success',
+    loadChildren: () =>
+      import('./pages/history-of-success/history-of-success.module').then(
+        (m) => m.HistoryOfSuccessModule,
+      ),
+  },
   { path: '**', component: NotFoundPageComponent },
 ]

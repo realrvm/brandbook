@@ -1,0 +1,54 @@
+<bb-wrapper>
+  <bb-breadcrumbs [items]="items" />
+  <bb-page-title title="Истории успеха" />
+
+  <p class="leading-relaxed max-w-[870px] mt-5 mb-14">
+    Список названий компаний из раздела с гиперссылкой. кликнув на название
+    компании, гость переходит на страницу с подробным описанием истории успеха
+    этой компании.
+  </p>
+
+  <div
+    class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-2.5 handset:mb-[74px] mb-[100px]"
+  >
+    @for (card of hosCards(); track card.id) {
+      <ng-container
+        *ngTemplateOutlet="
+          hosCompany;
+          context: {
+            $implicit: card.title,
+            img: card.img,
+            descr: card.descr,
+            date: card.date,
+            id: card.id,
+          }
+        "
+      />
+    }
+  </div>
+</bb-wrapper>
+
+<ng-template
+  #hosCompany
+  let-title
+  let-img="img"
+  let-descr="descr"
+  let-date="date"
+  let-id="id"
+>
+  <div
+    class="bg-white border-b-[6px] border-b-transparent hover:border-b-orange focus-visible:border-b-orange shadow-none outline-none cursor-pointer"
+    tabindex="0"
+    (click)="handlePosCardClick(id)"
+    (keypress)="handlePosCardClick(id)"
+  >
+    <div class="relative h-[197px]">
+      <img [ngSrc]="img" alt="history image" fill class="object-cover" />
+    </div>
+    <div class="py-4 px-9 flex flex-col">
+      <span class="text-[13px] text-grey-indicator mb-4">{{ date }}</span>
+      <div class="font-semibold text-[26px] mb-[60px]">{{ title }}</div>
+      <p class="text-md">{{ descr }}</p>
+    </div>
+  </div>
+</ng-template>
