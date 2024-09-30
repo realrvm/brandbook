@@ -8,6 +8,8 @@ import { VisuallyImpairedComponent } from '@core/shared/ui/visually-impaired/vis
 import { WrapperComponent } from '@core/wrapper/wrapper.component'
 import { MenuItem } from 'primeng/api'
 import { navItems } from '../nav-items'
+import { SidebarComponent } from '../sidebar/sidebar.component'
+import { OnOffService } from '@core/services/on-off.service'
 
 @Component({
   selector: 'bb-header',
@@ -19,12 +21,15 @@ import { navItems } from '../nav-items'
     WrapperComponent,
     SearchInputComponent,
     VisuallyImpairedComponent,
+    SidebarComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   private responsiveService = inject(ResponsiveService)
+  private onOffService = inject(OnOffService)
+
   public items: MenuItem[] = []
 
   private width = this.responsiveService.width
@@ -35,6 +40,6 @@ export class HeaderComponent {
   public navItems = signal(navItems).asReadonly()
 
   handleMenuClick() {
-    alert('TODO: сделать мобильное меню')
+    this.onOffService.setBurgerState(true)
   }
 }

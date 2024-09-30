@@ -1,0 +1,70 @@
+<p-sidebar
+  #sidebarRef
+  [visible]="sidebarVisible()"
+  position="right"
+  [fullScreen]="true"
+>
+  <ng-template pTemplate="headless">
+    <bb-wrapper>
+      <div class="py-5 flex items-center justify-between gap-2 tablet:gap-5">
+        <a routerLink="main">
+          <bb-svg-icon name="logo-sm"></bb-svg-icon>
+        </a>
+        <button (click)="closeCallback($event)">
+          <bb-svg-icon name="burger-close"></bb-svg-icon>
+        </button>
+      </div>
+    </bb-wrapper>
+    <div class="bg-blue mb-10">
+      <bb-wrapper>
+        <div
+          class="px-3 py-10 grid grid-cols-1 tablet:grid-cols-2 max-w-[500px] gap-y-6"
+        >
+          @for (navItem of navItems(); track $index) {
+            <a
+              routerLink="{{ navItem.path }}"
+              routerLinkActive="active-link"
+              class="text-white text-base text-left"
+              (click)="closeCallback($event)"
+              >{{ navItem.text }}</a
+            >
+          }
+        </div>
+      </bb-wrapper>
+    </div>
+
+    <bb-wrapper>
+      <div class="flex gap-4 items-center mb-5">
+        <bb-svg-icon name="location" />
+        <span class="font-md"
+          >650064, г. Кемерово, пр-кт. Советский, д. 58</span
+        >
+      </div>
+
+      <div class="flex gap-4 mb-5">
+        <div class="flex gap-4 items-center">
+          <bb-svg-icon name="phone" />
+          <span class="font-md">+7 (384-2) 56-43-17</span>
+        </div>
+        <div class="flex gap-4 items-center">
+          <bb-svg-icon name="email" />
+          <span class="font-md">sp&#64;ofukem.ru</span>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center mb-7">
+        <bb-svg-icon name="www" />
+        <span class="font-md">ofukem.ru</span>
+      </div>
+
+      <bb-icon-button
+        label="Написать нам"
+        position="left"
+        icon="email-to"
+        className="bg-orange text-white
+        hover:bg-active-orange h-10"
+        (click)="redirectToEmail($event)"
+      />
+    </bb-wrapper>
+  </ng-template>
+</p-sidebar>

@@ -57,7 +57,9 @@
     @let finance = servicesFinancing();
     <bb-services-financing [content]="finance.content" />
 
-    <bb-services-form />
+    <div #emailForm id="emailForm">
+      <bb-services-form />
+    </div>
 
     <bb-services-questions />
   </div>

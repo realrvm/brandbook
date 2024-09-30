@@ -1,4 +1,11 @@
-import { Component, inject, signal } from '@angular/core'
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core'
 import { BreadcrumbsComponent } from '@core/shared/ui/breadcrumbs/breadcrumbs.component'
 import { PageTitleComponent } from '@core/shared/ui/page-title/page-title.component'
 import { WrapperComponent } from '@core/wrapper/wrapper.component'
@@ -12,6 +19,7 @@ import { ServicesQuestionsComponent } from './services-questions/services-questi
 import { ServicesCalendarComponent } from './services-calendar/services-calendar.component'
 import { ServicesService } from './services.service'
 import { SubscriptionFormComponent } from '@core/widgets/subscription-form/subscription-form.component'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'bb-services',
@@ -32,13 +40,15 @@ import { SubscriptionFormComponent } from '@core/widgets/subscription-form/subsc
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss',
 })
-export class ServicesComponent {
+export class ServicesComponent implements AfterViewInit {
   public items = [
     { route: '/', label: 'Главная' },
     { label: 'Сервисы платформы' },
   ]
 
   private servicesService = inject(ServicesService)
+  private activeRoute = inject(ActivatedRoute)
+  private emailForm = viewChild<ElementRef<HTMLElement>>('emailForm')
 
   public sortButtons = signal(servicesButtons)
   public servicesFinancing = this.servicesService.servicesFinancing
@@ -59,5 +69,23 @@ export class ServicesComponent {
 
   public handleMeetupsBtn(): void {
     alert('TODO: Что показывает эта кнопка?')
+  }
+
+  ngAfterViewInit(): void {
+    const fragment = this.activeRoute.snapshot.fragment
+
+    if (fragment === 'emailForm') {
+      const section = this.emailForm()?.nativeElement.querySelector(
+        '#emailForm',
+      ) as HTMLElement
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        })
+      }
+    }
   }
 }
