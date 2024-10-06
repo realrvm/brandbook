@@ -22,3 +22,10 @@ export interface ProjectFile {
   img: string
   tag: string
 }
+
+export interface Intro {
+  id: number
+  title: string
+  descr: string
+  link: string
+}
