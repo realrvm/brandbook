@@ -5,6 +5,7 @@ import { WrapperComponent } from '@core/wrapper/wrapper.component'
 import { HistoryOfSuccessService } from '../history-of-success.service'
 import { ActivatedRoute } from '@angular/router'
 import { SvgIconComponent } from '@core/shared/ui/svg-icon/svg-icon.component'
+import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'bb-hos-company',
@@ -14,6 +15,7 @@ import { SvgIconComponent } from '@core/shared/ui/svg-icon/svg-icon.component'
     BreadcrumbsComponent,
     PageTitleComponent,
     SvgIconComponent,
+    NgOptimizedImage,
   ],
   templateUrl: './hos-company.component.html',
   styleUrl: './hos-company.component.scss',

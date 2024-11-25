@@ -26,7 +26,14 @@ interface DropdownItem {
         styleClass="bg-bkgrnd h-[47px] py-1.5 border shadow-none border-grey-strok hover:border-orange rounded-md pl-4 {{
           customStyles()
         }}"
-      ></p-dropdown>
+      >
+        <ng-template pTemplate="selectedItem">
+          <div class="flex align-items-center gap-2">
+            <div class="w-5 h-5 bg-orange"></div>
+            <div>test</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
     </form>
   `,
   styles: `
