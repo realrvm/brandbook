@@ -13,7 +13,7 @@ import { MainSwitchComponent } from './main-switch/main-switch.component'
     >
       <bb-wrapper>
         <section class="flex flex-col">
-          <div class="flex justify-between">
+          <div class="flex justify-between items-baseline">
             <div class="flex items-center gap-9 mb-14 flex-wrap">
               <div class="flex flex-col gap-2">
                 <h3 class="font-semibold text-[40px]">{{ title() }}</h3>

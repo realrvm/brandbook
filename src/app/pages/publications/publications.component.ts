@@ -8,6 +8,7 @@ import { SearchInputComponent } from '@core/shared/ui/search-input/search-input.
 import { CommonModule, NgOptimizedImage } from '@angular/common'
 import { PublicationsService } from './publications.service'
 import { SubscriptionFormComponent } from '@core/widgets/subscription-form/subscription-form.component'
+import { SpacePipe } from '@core/pipes/space.pipe'
 
 @Component({
   selector: 'bb-publications',
@@ -21,6 +22,7 @@ import { SubscriptionFormComponent } from '@core/widgets/subscription-form/subsc
     SearchInputComponent,
     NgOptimizedImage,
     SubscriptionFormComponent,
+    SpacePipe,
   ],
   templateUrl: './publications.component.html',
   styleUrl: './publications.component.scss',

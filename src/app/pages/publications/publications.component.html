@@ -39,10 +39,12 @@
       </div>
     </div>
     <div class="tablet:w-1/3 desktop:w-1/3">
-      <h3 class="text-[28px] font-semibold mb-4">Главные новости</h3>
-      <div class="flex items-center mb-5">
-        <span class="h-1.5 bg-orange w-2/3"></span>
-        <span class="h-1.5 bg-blue w-1/3"></span>
+      <div class="inline-block">
+        <h3 class="text-[28px] font-semibold mb-2">Главные новости</h3>
+        <div class="flex items-center mb-5">
+          <span class="h-1.5 bg-orange w-2/3"></span>
+          <span class="h-1.5 bg-blue w-1/3"></span>
+        </div>
       </div>
       <div class="mb-16">
         @for (news of newsList(); track news.id) {
@@ -65,7 +67,7 @@
 
 <ng-template #mainNewsCard let-title let-date="date" let-section="section">
   <div class="border-t border-t-light-grey flex flex-col py-9">
-    <span class="text-sm text-grey-indicator mb-3">{{ date }}</span>
+    <span class="text-sm text-grey-indicator mb-3">{{ date | space }}</span>
     <h4 class="font-semibold mb-7 text-[23px] leading-tight">{{ title }}</h4>
     <span class="text-sm text-orange">{{ section }}</span>
   </div>
@@ -79,7 +81,7 @@
   let-content="content"
   let-img="img"
 >
-  <div class="bg-white flex flex-col pb-10">
+  <div class="flex flex-col pb-10">
     <div class="h-[239px] w-full relative mb-4">
       <img
         [ngSrc]="img"
@@ -92,7 +94,7 @@
     <div class="flex items-center gap-5 mb-4">
       <span
         class="grid place-items-center w-[108px] h-[34px] bg-orange text-bkgrnd"
-        >{{ date }}</span
+        >{{ date | space }}</span
       >
       <span class="text-orange text-md">{{ section }}</span>
     </div>
