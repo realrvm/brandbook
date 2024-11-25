@@ -6,6 +6,7 @@ import { WrapperComponent } from '@core/wrapper/wrapper.component'
 import { ProjectService } from './project.service'
 import { RouterLink, RouterLinkActive } from '@angular/router'
 import { asideMenuItems } from './project'
+import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'bb-project',
@@ -17,6 +18,7 @@ import { asideMenuItems } from './project'
     SvgIconComponent,
     RouterLink,
     RouterLinkActive,
+    NgOptimizedImage,
   ],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss',

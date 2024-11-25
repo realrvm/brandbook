@@ -15,20 +15,44 @@
 
       <div class="mb-16">
         <h2 class="font-semibold text-[24px] mb-6">Облигации</h2>
-        <div class="bg-light-grey py-3 px-4 border-b-[6px] border-b-blue">
-          <h3 class="text-[20px] font-semibold leading-relaxed">
-            ИнфоВотч-000А-00
-          </h3>
-          <p class="text-md mb-3">Купон 0%</p>
-          <div class="grid grid-cols-2 font-md">
-            <span>MIXES ISIN</span>
-            <span>Объём выпуска 0 шт.</span>
-            <span>Номер</span>
-            <span>Статус Готовится</span>
-            <span>Дата начала торгов</span>
-            <span>Номинал 1 000 ₽</span>
+        <div class="flex flex-col gap-9">
+          <div class="bg-light-grey py-4 px-6 border-b-[6px] border-b-blue">
+            <h3
+              class="text-[20px] font-semibold leading-relaxed text-orange mb-1"
+            >
+              ИнфоВотч-000А-00
+            </h3>
+            <p class="text-md mb-6">Купон 0%</p>
+            <div class="grid grid-cols-2 font-md gap-y-3">
+              <span>MIXES ISIN</span>
+              <span>Объём выпуска <span class="font-bold">0 шт.</span></span>
+              <span>Номер</span>
+              <span>Статус <span class="font-bold">Готовится</span></span>
+              <span>Дата начала торгов</span>
+              <span>Номинал <span class="font-bold">1 000 ₽</span></span>
+            </div>
+          </div>
+          <div class="bg-light-grey py-4 px-6 border-b-[6px] border-b-blue">
+            <h3
+              class="text-[20px] font-semibold leading-relaxed text-orange mb-1"
+            >
+              ИнфоВотч-000А-00
+            </h3>
+            <p class="text-md mb-6">Купон 0%</p>
+            <div class="grid grid-cols-2 font-md gap-y-3">
+              <span>MIXES ISIN</span>
+              <span>Объём выпуска <span class="font-bold">0 шт.</span></span>
+              <span>Номер</span>
+              <span>Статус <span class="font-bold">Готовится</span></span>
+              <span>Дата начала торгов</span>
+              <span>Номинал <span class="font-bold">1 000 ₽</span></span>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div class="relative h-[409px] w-full mb-9">
+        <img ngSrc="assets/images/img/dummy/chart.png" fill class="object-cover" />
       </div>
 
       <div class="bg-white p-9 mb-9">
@@ -44,8 +68,33 @@
           </div>
         </div>
       </div>
+
+      <div class="bg-light-grey py-9 px-2 mb-10">
+        <div class="px-7">
+          <h3 class="font-semibold text-[24px] mb-3">Дерево сообытий</h3>
+        </div>
+        <div
+          class="border-b border-b-white border-0.5 px-7 py-5 text-md grid grid-cols-[160px,1fr]"
+        >
+          <span>07.09.2024</span>
+          <span>Дело №А40-14917/2024 , сумма 130 832 672,31</span>
+        </div>
+        <div
+          class="border-b border-b-white border-0.5 px-7 py-5 text-md grid grid-cols-[160px,1fr]"
+        >
+          <span>07.09.2024</span>
+          <span>Дело №А40-14917/2024 , сумма 130 832 672,31</span>
+        </div>
+        <div
+          class="border-b border-b-white border-0.5 px-7 py-5 text-md grid grid-cols-[160px,1fr]"
+        >
+          <span>07.09.2024</span>
+          <span>Дело №А40-14917/2024 , сумма 130 832 672,31</span>
+        </div>
+      </div>
     </div>
-    <ul class="flex flex-col gap-10 handset:hidden">
+
+    <ul class="flex flex-col gap-10 handset:hidden mt-10">
       @for (asideItem of asideMenuItems; track asideItem.id) {
         <li>
           <a
