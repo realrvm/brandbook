@@ -46,13 +46,37 @@
   <div class="bg-light-grey p-9 mb-9">
     <h3 class="font-semibold text-[24px] mb-6">Контакты</h3>
     <div class="pl-10">
-      <div class="mb-8 text-md">
+      <div class="mb-8 text-md flex gap-4">
+        <bb-svg-icon name="location-white" />
         <p>{{ contacts.address }}</p>
       </div>
+      <div class="flex handset:flex-col flex-row gap-10 text-blue text-md mb-8">
+        <div class="flex gap-4">
+          <bb-svg-icon name="phone-white" />
+          <p class="text-black">{{ contacts.phone }}</p>
+        </div>
+        <div class="flex gap-4">
+          <bb-svg-icon name="email-white" />
+          <p>{{ contacts.email }}</p>
+        </div>
+        <div class="flex gap-4">
+          <bb-svg-icon name="www-white" />
+          <p>{{ contacts.www }}</p>
+        </div>
+      </div>
       <div class="flex handset:flex-col flex-row gap-10 text-blue text-md">
-        <p>{{ contacts.phone }}</p>
-        <p>{{ contacts.email }}</p>
-        <p>{{ contacts.www }}</p>
+        <div class="flex gap-4">
+          <bb-svg-icon name="phone-white" />
+          <p class="text-black">{{ contacts.phone }}</p>
+        </div>
+        <div class="flex gap-4">
+          <bb-svg-icon name="email-white" />
+          <p>{{ contacts.email }}</p>
+        </div>
+        <div class="flex gap-4">
+          <bb-svg-icon name="www-white" />
+          <p>{{ contacts.www }}</p>
+        </div>
       </div>
     </div>
   </div>
