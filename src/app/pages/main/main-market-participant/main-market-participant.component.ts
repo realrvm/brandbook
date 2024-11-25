@@ -8,7 +8,11 @@ import { NgOptimizedImage } from '@angular/common'
   standalone: true,
   imports: [MainSectionComponent, NgOptimizedImage],
   template: `
-    <bb-main-section [title]="title" [isLightGrey]="isLightGrey">
+    <bb-main-section
+      [title]="title"
+      [isLightGrey]="isLightGrey"
+      [hasSwitch]="hasSwitch"
+    >
       <div
         class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-5 gap-4"
       >
@@ -68,6 +72,7 @@ export class MainMarketParticipantComponent {
 
   public title = 'Участники рынка'
   public isLightGrey = true
+  public hasSwitch = true
 
   public marketParticipants = this.mpService.marketParticipants
 }

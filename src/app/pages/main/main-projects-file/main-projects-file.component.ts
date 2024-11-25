@@ -14,6 +14,7 @@ export class MainProjectsFileComponent {
   private mainService = inject(MainService)
 
   public title = 'Картотека проектов'
+  public hasSwitch = true
 
   public projects = this.mainService.projectFiles
 }

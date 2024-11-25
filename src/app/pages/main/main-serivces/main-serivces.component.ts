@@ -8,7 +8,7 @@ import { MainService } from '../main.service'
   standalone: true,
   imports: [MainSectionComponent, NgOptimizedImage],
   template: `
-    <bb-main-section [title]="title">
+    <bb-main-section [title]="title" [hasSwitch]="hasSwitch">
       <div
         class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-3"
       >
@@ -37,6 +37,7 @@ import { MainService } from '../main.service'
 })
 export class MainSerivcesComponent {
   private readonly mainService = inject(MainService)
+  public hasSwitch = true
 
   public title = 'Сервисы платформы'
   public services = this.mainService.services
