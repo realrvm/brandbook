@@ -3,7 +3,7 @@ import { BreadcrumbsComponent } from '@core/shared/ui/breadcrumbs/breadcrumbs.co
 import { PageTitleComponent } from '@core/shared/ui/page-title/page-title.component'
 import { WrapperComponent } from '@core/wrapper/wrapper.component'
 import { ServicesForBusinessService } from './services-for-business.service'
-import { CommonModule } from '@angular/common'
+import { CommonModule, NgClass } from '@angular/common'
 import { IconButtonComponent } from '@core/shared/ui/buttons/icon-button/icon-button.component'
 import { Router } from '@angular/router'
 
@@ -16,6 +16,7 @@ import { Router } from '@angular/router'
     BreadcrumbsComponent,
     PageTitleComponent,
     IconButtonComponent,
+    NgClass,
   ],
   templateUrl: './services-for-business.component.html',
   styleUrl: './services-for-business.component.scss',

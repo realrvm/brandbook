@@ -13,6 +13,7 @@
             odd,
             path: service.path,
             content: service.content,
+            dots: service.dots,
           }
         "
       />
@@ -26,21 +27,21 @@
   let-path="path"
   let-content="content"
   let-odd="odd"
+  let-dots="dots"
 >
   <div
-    class="p-7 tablet:p-8 desktop:p-10 bg-light-grey flex flex-col justify-between gap-6 desktop:min-h-[500px] border
-    border-transparent hover:border-orange"
+    class="p-7 tablet:p-8 desktop:p-10 bg-light-grey flex flex-col justify-between gap-6 desktop:min-h-[500px] border border-transparent hover:border-orange"
   >
     <div class="flex flex-col gap-4">
-      <h3 class="font-semibold text-[22px] leading-tight">{{ title }}</h3>
-      <div class="h-1.5 w-[80%] {{ odd ? 'bg-blue' : 'bg-orange' }}"></div>
-      <ul class="flex flex-col gap-2">
+      <div class="flex flex-col min-h-[75px] justify-between">
+        <h3 class="font-semibold text-[22px] leading-tight">{{ title }}</h3>
+        <div class="h-1.5 w-[80%] {{ odd ? 'bg-blue' : 'bg-orange' }}"></div>
+      </div>
+      <ul class="flex flex-col gap-3">
         @for (item of content.split(';'); track $index) {
-          <ol>
-            {{
-              item
-            }}
-          </ol>
+          <li class="leading-[1.83]" [ngClass]="{ 'is-dotted': dots }">
+            {{ item }}
+          </li>
         }
       </ul>
     </div>

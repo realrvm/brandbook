@@ -1,3 +1,8 @@
 :host {
   @apply block pb-7 tablet:pb-[90px] desktop:pb-[200px];
+
+  .is-dotted {
+    list-style: disc;
+    margin-left: 15px;
+  }
 }
