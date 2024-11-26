@@ -6,10 +6,18 @@ export const searchTemplateButtons = [
 ]
 
 export const dropdownInvestorsSortList = [
-  { name: 'Возрастанию доходности', value: 'increasingProfitability' },
-  { name: 'Убыванию доходности', value: 'decreasingProfitability' },
-  { name: 'Возрастанию ставки', value: 'increasingRate' },
-  { name: 'Убыванию ставки', value: 'decreasingRate' },
+  {
+    name: 'Возрастанию доходности',
+    value: 'increasingProfitability',
+    icon: 'cb-chosen',
+  },
+  {
+    name: 'Убыванию доходности',
+    value: 'decreasingProfitability',
+    icon: 'cb-unchosen',
+  },
+  { name: 'Возрастанию ставки', value: 'increasingRate', icon: 'cb-unchosen' },
+  { name: 'Убыванию ставки', value: 'decreasingRate', icon: 'cb-unchosen' },
 ]
 
 export const dropdownInvestorsStatusList = [

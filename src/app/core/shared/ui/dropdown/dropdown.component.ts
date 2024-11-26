@@ -6,16 +6,25 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms'
 import { DropdownModule } from 'primeng/dropdown'
+import { SvgIconComponent } from '../svg-icon/svg-icon.component'
+import { NgClass } from '@angular/common'
 
 interface DropdownItem {
   name: string
   value: string
+  icon?: string
 }
 
 @Component({
   selector: 'bb-dropdown',
   standalone: true,
-  imports: [DropdownModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SvgIconComponent,
+    NgClass,
+  ],
   template: `
     <form [formGroup]="form">
       <p-dropdown
@@ -27,10 +36,21 @@ interface DropdownItem {
           customStyles()
         }}"
       >
-        <ng-template pTemplate="selectedItem">
-          <div class="flex align-items-center gap-2">
-            <div class="w-5 h-5 bg-orange"></div>
-            <div>test</div>
+        <ng-template let-item pTemplate="item">
+          <div class="flex align-items-center gap-9">
+            @if (item.icon) {
+              <bb-svg-icon [name]="item.icon" />
+              <div
+                class="font-semibold text-[16px]"
+                [ngClass]="
+                  item.icon === 'cb-chosen' ? 'text-orange' : 'text-black'
+                "
+              >
+                {{ item.name }}
+              </div>
+            } @else {
+              <div class="font-semibold text-[16px]">{{ item.name }}</div>
+            }
           </div>
         </ng-template>
       </p-dropdown>
@@ -42,6 +62,17 @@ interface DropdownItem {
 
       ::ng-deep .p-dropdown .p-dropdown-trigger {
         @apply text-orange;
+      }
+
+      ::ng-deep
+        .p-dropdown-panel
+        .p-dropdown-items
+        .p-dropdown-item:not(.p-highlight):not(.p-disabled).p-focus {
+        @apply bg-white;
+      }
+
+      ::ng-deep ul.p-dropdown-items {
+        @apply p-5;
       }
 
       ::ng-deep .p-dropdown .p-dropdown-trigger[aria-expanded='true'] {
