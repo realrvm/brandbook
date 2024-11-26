@@ -41,6 +41,11 @@ import { ServicesService } from '../services.service'
       ::ng-deep .p-accordion-content {
         @apply py-5 px-12 bg-light-grey border-t border-t-white;
       }
+
+      ::ng-deep .pi-angle-up,
+      ::ng-deep .pi-plus {
+        @apply text-orange p-3 bg-white mr-4;
+      }
     }
   `,
 })
