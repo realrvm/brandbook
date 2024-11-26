@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
         'Ноябрь',
         'Декабрь',
       ],
-      dayNamesMin: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+      dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
     })
   }
 }

@@ -37,13 +37,36 @@ import { CalendarModule } from 'primeng/calendar'
         @apply text-[20px] font-semibold;
       }
 
-      ::ng-deep .p-datepicker-today > span.p-element {
-        @apply bg-orange hover:bg-active-orange;
+      ::ng-deep .p-datepicker-today > span.p-element,
+      ::ng-deep .p-datepicker-today,
+      ::ng-deep .p-datepicker table td > span.p-highlight {
+        @apply bg-active-orange;
       }
 
       ::ng-deep .p-datepicker-calendar-container td,
       ::ng-deep .p-datepicker-calendar-container th {
         @apply p-1;
+      }
+
+      ::ng-deep .p-datepicker table td > span {
+        @apply rounded-none font-medium text-black justify-end pr-1 pl-2;
+      }
+
+      ::ng-deep p-datepicker-other-month {
+        color: var(--grey-strok) !important;
+      }
+
+      ::ng-deep .p-datepicker table th {
+        @apply py-1;
+      }
+
+      ::ng-deep .p-datepicker table thead {
+        @apply h-10;
+      }
+
+      ::ng-deep .p-datepicker table td,
+      ::ng-deep .p-datepicker table th {
+        @apply border border-grey-strok;
       }
     }
   `,
